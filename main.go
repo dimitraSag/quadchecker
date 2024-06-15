@@ -231,6 +231,14 @@ func main() {
 		}
 	}
 
+	// Δημιουργία του quadchecker εκτελέσιμου αρχείου
+	cmd := exec.Command("go", "build", "-o", "quadchecker", "main.go")
+	err := cmd.Run()
+	if err != nil {
+		fmt.Printf("Error building quadchecker: %v\n", err)
+		return
+	}
+
 	// Διάβασμα της εισόδου
 	var input strings.Builder
 	scanner := bufio.NewScanner(os.Stdin)
