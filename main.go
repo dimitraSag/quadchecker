@@ -11,9 +11,7 @@ import (
 	"strings"
 )
 
-// Function to generate quadA pattern
 func QuadA(x, y int) {
-	// If either x or y is non-positive, do nothing.
 	if x <= 0 || y <= 0 {
 		return
 	}
@@ -23,13 +21,10 @@ func QuadA(x, y int) {
 				// Corners
 				fmt.Print("o")
 			} else if i == 0 || i == y-1 {
-				// Top or bottom edge (excluding corners)
 				fmt.Print("-")
 			} else if j == 0 || j == x-1 {
-				// Left or right edge (excluding corners)
 				fmt.Print("|")
 			} else {
-				// Inside of the rectangle
 				fmt.Print(" ")
 			}
 		}
@@ -37,7 +32,6 @@ func QuadA(x, y int) {
 	}
 }
 
-// Function to generate quadB pattern
 func QuadB(x, y int) {
 	if x <= 0 || y <= 0 {
 		return
@@ -58,7 +52,6 @@ func QuadB(x, y int) {
 	}
 }
 
-// Function to generate quadC pattern
 func QuadC(x, y int) {
 	if x <= 0 || y <= 0 {
 		return
@@ -81,7 +74,6 @@ func QuadC(x, y int) {
 	}
 }
 
-// Function to generate quadD pattern
 func QuadD(x, y int) {
 	if x <= 0 || y <= 0 {
 		return
@@ -109,7 +101,6 @@ func QuadD(x, y int) {
 	}
 }
 
-// Function to generate quadE pattern
 func QuadE(x, y int) {
 	if x <= 0 || y <= 0 {
 		return
@@ -148,7 +139,6 @@ func main() {
 	if len(os.Args) > 1 {
 		quadName := os.Args[1]
 
-		// Check if the command is "build"
 		if quadName == "build" {
 			commands := []string{
 				"go build -o quadA main.go", "chmod +x quadA",
@@ -211,7 +201,7 @@ func main() {
 		return
 	}
 
-	// Quadchecker mode to compare input with generated quads
+	// Quadchecker
 	if executableName == "quadchecker" || executableName == "main" {
 		reader := bufio.NewReader(os.Stdin)
 		var inputLines []string
@@ -252,7 +242,7 @@ func main() {
 			return
 		}
 
-		// Fallback for handling go run .
+		// handling go run .
 		if len(os.Args) == 1 {
 			if inputStr != "" {
 				quadCommands := []string{"./quadA", "./quadB", "./quadC", "./quadD", "./quadE"}
@@ -265,7 +255,7 @@ func main() {
 					}
 					height++
 				}
-				width = width - 1 // To handle the trailing newline character
+				width = width - 1 // handle the trailing newline character
 
 				matches := []string{}
 				for _, quadCmd := range quadCommands {
